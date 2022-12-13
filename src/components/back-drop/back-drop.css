@@ -1,0 +1,40 @@
+@keyframes backdrop {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+:host {
+  position: fixed;
+  overflow: hidden;
+  inset: 0;
+  background-color: var(--c-overlay);
+  z-index: 99998;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  will-change: opacity;
+}
+
+:host(.showing),
+:host(.show),
+:host(.hiding) {
+  display: flex;
+}
+
+:host(.showing) {
+  animation: backdrop var(--speed-normal) var(--bezier-ease-in-out-sine) forwards;
+}
+
+:host(.hiding) {
+  animation: backdrop var(--speed-normal) var(--bezier-ease-in-out-sine) reverse;
+}
+
+:host(.hide) {
+  display: none;
+}
